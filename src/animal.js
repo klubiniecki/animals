@@ -22,7 +22,15 @@ const Animal = ({ url, src }) => {
 
   useClickOutside(clickRef, stop);
 
-  return <img onClick={play} ref={clickRef} src={src} alt="animal" />;
+  return (
+    <img
+      onTouchStart={play}
+      onClick={play}
+      ref={clickRef}
+      src={src}
+      alt="animal"
+    />
+  );
 };
 
 export default Animal;
