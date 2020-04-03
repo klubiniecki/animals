@@ -24,4 +24,5 @@ code {
   margin: 1rem;
   width: 256px;
   height: 256px;
+  cursor: pointer;
 }
