@@ -2,7 +2,7 @@ import React from "react";
 import useSound from "use-sound";
 
 const Animal = ({ url, src }) => {
-  const [play, { stop }] = useSound(url);
+  const [play, { stop, isPlaying }] = useSound(url);
   const clickRef = React.useRef();
 
   const useClickOutside = (ref, callback) => {
@@ -22,15 +22,12 @@ const Animal = ({ url, src }) => {
 
   useClickOutside(clickRef, stop);
 
-  return (
-    <img
-      onTouchStart={play}
-      onClick={play}
-      ref={clickRef}
-      src={src}
-      alt="animal"
-    />
-  );
+  const onClick = () => {
+    if (isPlaying) return;
+    play();
+  };
+
+  return <img onClick={onClick} ref={clickRef} src={src} alt="animal" />;
 };
 
 export default Animal;
